@@ -7,3 +7,7 @@ policies:
   - name: MemoizationPolicy
     max_history: 5
   - name: FormPolicy
+
+language: "en"
+
+pipeline: spacy_sklearn

@@ -12,7 +12,7 @@ import uuid
 
 
 def test_agent_and_persist():
-    policies = config.load("policies.yml")
+    policies = config.load("config.yml")
     policies[0] = KerasPolicy(epochs=2)  # Keep training times low
 
     agent = Agent("domain.yml", policies=policies)
