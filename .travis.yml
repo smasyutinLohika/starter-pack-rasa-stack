@@ -17,3 +17,9 @@ install:
 - python -m spacy link en_core_web_md en
 script:
 - python -m pytest tests
+jobs:
+  include:
+  - stage: test
+    name: "Black Formatting"
+    python: 3.6
+    script: pip install black; black --check .
