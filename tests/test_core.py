@@ -22,7 +22,10 @@ def test_agent_and_persist():
 
     loaded = Agent.load("./tests/models/dialogue")
 
-    assert agent.handle_text("/greet") is not None
+    assert agent.handle_text("/greet")[0]["text"] is not None
+    assert agent.handle_text("/goodbye")[0]["text"] is not None
+    assert agent.handle_text("/thanks")[0]["text"] is not None
+
     assert loaded.domain.action_names == agent.domain.action_names
     assert loaded.domain.intents == agent.domain.intents
     assert loaded.domain.entities == agent.domain.entities
