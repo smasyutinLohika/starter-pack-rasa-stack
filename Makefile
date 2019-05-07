@@ -1,4 +1,4 @@
-.PHONY: clean train-nlu train-core cmdline server
+.PHONY: init clean train-nlu train-core cmdline server test
 
 TEST_PATH=./
 
@@ -24,6 +24,9 @@ clean:
 	rm -rf *.egg-info
 	rm -rf docs/_build
 
+init:
+	pip install -r requirements.txt
+
 train-nlu:
 	python -m rasa_nlu.train -c nlu_config.yml --data data/nlu_data.md -o models --fixed_model_name nlu --project current --verbose
 
@@ -32,6 +35,9 @@ train-core:
 
 cmdline:
 	python -m rasa_core.run -d models/current/dialogue -u models/current/nlu --endpoints endpoints.yml
-	
+
 action-server:
 	python -m rasa_core_sdk.endpoint --actions actions
+
+test:
+	pytest ./tests
