@@ -1,4 +1,11 @@
 __pycache__
 env/
+.venv/
 
 rasa_core.log
+
+.vscode/
+.idea/
+.pytest_cache
+models/
+tests/models/
