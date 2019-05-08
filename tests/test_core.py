@@ -1,7 +1,6 @@
 from rasa_core import config
 from rasa_core.trackers import DialogueStateTracker
 from rasa_core.domain import Domain
-from rasa_core.policies import KerasPolicy
 from rasa_core.agent import Agent
 from rasa_core.dispatcher import Dispatcher
 from rasa_core.channels import CollectingOutputChannel
