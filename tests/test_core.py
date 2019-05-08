@@ -13,18 +13,22 @@ import uuid
 
 def test_agent_and_persist():
     policies = config.load("policies.yml")
-    policies[0] = KerasPolicy(epochs=2)  # Keep training times low
 
     agent = Agent("domain.yml", policies=policies)
     training_data = agent.load_data("data/stories.md")
     agent.train(training_data, validation_split=0.0)
-    agent.persist("./tests/models/dialogue")
-
-    loaded = Agent.load("./tests/models/dialogue")
 
     assert agent.handle_text("/greet")[0]["text"] is not None
     assert agent.handle_text("/goodbye")[0]["text"] is not None
     assert agent.handle_text("/thanks")[0]["text"] is not None
+
+    agent.persist("./tests/models/dialogue")
+
+    loaded = Agent.load("./tests/models/dialogue")
+
+    assert loaded.handle_text("/greet")[0]["text"] is not None
+    assert loaded.handle_text("/goodbye")[0]["text"] is not None
+    assert loaded.handle_text("/thanks")[0]["text"] is not None
 
     assert loaded.domain.action_names == agent.domain.action_names
     assert loaded.domain.intents == agent.domain.intents
