@@ -27,13 +27,14 @@ After you clone the repository, a directory called starter-pack-rasa-stack will 
 If you haven’t installed Rasa NLU and Rasa Core yet, you can do it by navigating to the project directory and running:  
 
 ```bash
-pip install -r requirements.txt
+make init
 ```
 
-You also need to install a spaCy English language model. You can install it by running:
+This command will install all the requirements, update Rasa packages to the latest version and install spaCy English language model. All you need to start working with your very first project.
+You can verify installation by
 
 ```bash
-python -m spacy download en
+make test
 ```
 
 ## What’s in this starter-pack?

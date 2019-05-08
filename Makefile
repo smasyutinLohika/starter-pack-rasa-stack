@@ -26,6 +26,12 @@ clean:
 
 init:
 	pip install -r requirements.txt
+	pip install pytest==3.5.1
+	pip install rasa_nlu --upgrade
+	pip install rasa_core --upgrade
+	pip install rasa_core_sdk --upgrade
+	python -m spacy download en_core_web_md
+	python -m spacy link en_core_web_md en
 
 train-nlu:
 	python -m rasa_nlu.train -c nlu_config.yml --data data/nlu_data.md -o models --fixed_model_name nlu --project current --verbose
