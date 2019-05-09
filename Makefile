@@ -27,9 +27,9 @@ clean:
 	rm -rf tests/models
 
 init:
-	pip install -r requirements.txt
+	pip install black==19.3b0
 	pip install pytest==3.5.1
-	pip install black
+	pip install -r requirements.txt
 	pip install rasa_nlu --upgrade
 	pip install rasa_core --upgrade
 	pip install rasa_core_sdk --upgrade
