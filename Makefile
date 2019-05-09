@@ -1,4 +1,4 @@
-.PHONY: init clean train-nlu train-core cmdline server test
+.PHONY: init clean train-nlu train-core cmdline server check-formatting test
 
 TEST_PATH=./
 
@@ -23,10 +23,13 @@ clean:
 	rm -rf dist/
 	rm -rf *.egg-info
 	rm -rf docs/_build
+	rm -rf models
+	rm -rf tests/models
 
 init:
 	pip install -r requirements.txt
 	pip install pytest==3.5.1
+	pip install black
 	pip install rasa_nlu --upgrade
 	pip install rasa_core --upgrade
 	pip install rasa_core_sdk --upgrade
@@ -44,6 +47,9 @@ cmdline:
 
 action-server:
 	python -m rasa_core_sdk.endpoint --actions actions
+
+check-formatting:
+	black --check .
 
 test:
 	python -m pytest tests
