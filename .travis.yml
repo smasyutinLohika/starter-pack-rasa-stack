@@ -8,18 +8,12 @@ python:
 - '3.5'
 - '3.6'
 install:
-- pip install -r requirements.txt
-- pip install pytest==3.5.1
-- pip install rasa_nlu --upgrade
-- pip install rasa_core --upgrade
-- pip install rasa_core_sdk --upgrade
-- python -m spacy download en_core_web_md
-- python -m spacy link en_core_web_md en
+- make init
 script:
-- python -m pytest tests
+- make test
 jobs:
   include:
   - stage: test
-    name: "Black Formatting"
+    name: "Check Black Formatting"
     python: 3.6
-    script: pip install black; black --check .
+    script: make check-formatting
