@@ -27,7 +27,6 @@ clean:
 	rm -rf tests/models
 
 init:
-	pip install black==19.3b0
 	pip install pytest==3.5.1
 	pip install -r requirements.txt
 	pip install rasa_nlu --upgrade
@@ -49,6 +48,7 @@ action-server:
 	python -m rasa_core_sdk.endpoint --actions actions
 
 check-formatting:
+	pip install black
 	black --check .
 
 test:
