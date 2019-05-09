@@ -46,4 +46,4 @@ action-server:
 	python -m rasa_core_sdk.endpoint --actions actions
 
 test:
-	pytest ./tests
+	python -m pytest tests
